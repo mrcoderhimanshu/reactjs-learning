@@ -17,6 +17,10 @@ const Home = () => {
     const handleChange = () => {
         setName('Napster');
     }
+    const handleDelete = (id) =>{
+        const newBlogs = blogs.filter(blog => blog.id !== id);
+        setBlogs(newBlogs);
+    }
     return ( 
         <div>
             <h1>Home Page</h1>
@@ -25,10 +29,11 @@ const Home = () => {
             <p><button onClick={() =>{handleParamMethod('param')}}>Click Me</button></p>
             <p>Welcome {name}</p>
             <p><button onClick={handleChange}>UseState-Hook-View</button></p>
-            <BlogList blogs={blogs} title="Blog List"/>
+            <BlogList blogs={blogs} title="Blog List" handleDelete ={handleDelete}/>
             <BlogList blogs={blogs.filter((blog) => blog.author === 'frank')} title="Franks Blog List!"/>
         </div>
      );
+    
 }
  
 export default Home;
