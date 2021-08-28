@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import BlogList from "./BlogList";
 const Home = () => {
     const [name, setName] = useState('Dusty');
@@ -21,6 +21,9 @@ const Home = () => {
         const newBlogs = blogs.filter(blog => blog.id !== id);
         setBlogs(newBlogs);
     }
+    useEffect(() => {
+        console.log('runs on every state change. As we didn\'t attached dependencies. Or an empty array after the useEffect.');
+    })
     return ( 
         <div>
             <h1>Home Page</h1>
@@ -30,7 +33,7 @@ const Home = () => {
             <p>Welcome {name}</p>
             <p><button onClick={handleChange}>UseState-Hook-View</button></p>
             <BlogList blogs={blogs} title="Blog List" handleDelete ={handleDelete}/>
-            <BlogList blogs={blogs.filter((blog) => blog.author === 'frank')} title="Franks Blog List!"/>
+            
         </div>
      );
     
