@@ -22,8 +22,11 @@ const Home = () => {
         setBlogs(newBlogs);
     }
     useEffect(() => {
-        console.log('runs on every state change. As we didn\'t attached dependencies. Or an empty array after the useEffect.');
-    })
+        //console.log('runs on every state change. As we didn\'t attached dependencies. Or an empty array after the useEffect.');
+        //console.log('Now it will run only at the first time');
+        console.log('It will run at the begining and also at the state change');
+        //console.log('We can trigger it at a particular state change by adding that state into the array');
+    },[name])
     return ( 
         <div>
             <h1>Home Page</h1>
