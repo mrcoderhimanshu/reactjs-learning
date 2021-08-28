@@ -25,8 +25,8 @@ const Home = () => {
             <p><button onClick={() =>{handleParamMethod('param')}}>Click Me</button></p>
             <p>Welcome {name}</p>
             <p><button onClick={handleChange}>UseState-Hook-View</button></p>
-            <h1>Blogs List</h1>
             <BlogList blogs={blogs} title="Blog List"/>
+            <BlogList blogs={blogs.filter((blog) => blog.author === 'frank')} title="Franks Blog List!"/>
         </div>
      );
 }
