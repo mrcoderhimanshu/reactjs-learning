@@ -3,6 +3,7 @@ import BlogList from "./BlogList";
 const Home = () => {
     const [name, setName] = useState('Dusty');
     const [blogs, setBlogs] = useState(null);
+    const [loading, setLoading] = useState(true);
     /*
     const [blogs, setBlogs] = useState([
         {title:"My new website", body: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled....", author:"mario", id: 1},
@@ -36,7 +37,8 @@ const Home = () => {
         fetch('http://localhost:3000/blogs').then(res => {
             return res.json();
         }).then(data =>{
-            setBlogs(data)
+            setBlogs(data);
+            setLoading(false);
         })
     },[])
     return ( 
@@ -47,6 +49,7 @@ const Home = () => {
             <p><button onClick={() =>{handleParamMethod('param')}}>Click Me</button></p>
             <p>Welcome {name}</p>
             <p><button onClick={handleChange}>UseState-Hook-View</button></p>
+            {loading && <div>Loading...</div>}
             {blogs && <BlogList blogs={blogs} title="Blog List" handleDelete ={handleDelete}/>}
             
         </div>
